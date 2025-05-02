@@ -2,7 +2,8 @@
 const nextConfig = {
   output: 'export', // Static export
   images: {
-    unoptimized: true // Disables Image Optimization API
+    unoptimized: true,
+    domains: [],// Disables Image Optimization API
   },
 };
 
