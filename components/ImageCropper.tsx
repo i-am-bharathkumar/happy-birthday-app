@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from './ImageCropper.module.css';
-import Image from 'next/image'; 
 
 interface Props {
   imageSrc: string;
@@ -38,7 +37,7 @@ const ImageCropper: React.FC<Props> = ({
 
   // Initialize image and crop area
   useEffect(() => {
-    const img = document.createElement('img');
+    const img = new Image();
     img.src = imageSrc;
     img.onload = () => {
       setImageSize({ width: img.width, height: img.height });
@@ -102,7 +101,7 @@ const ImageCropper: React.FC<Props> = ({
         height: newHeight
       });
     }
-  }, [selectedRatio, crop]);
+  }, [selectedRatio]);
 
   const updatePreview = () => {
     if (crop.width > 10 && crop.height > 10 && imageRef.current) {
@@ -561,7 +560,7 @@ const ImageCropper: React.FC<Props> = ({
         const sourceWidth = crop.width * scaleFactor / zoomFactor;
         const sourceHeight = crop.height * scaleFactor / zoomFactor;
         
-        const img = document.createElement('img');
+        const img = new Image();
         img.src = imageSrc;
         img.onload = () => {
           // Ensure source coordinates are within the image bounds
@@ -638,7 +637,7 @@ const ImageCropper: React.FC<Props> = ({
           onMouseLeave={handleMouseUp}
           onContextMenu={(e) => handlePanStart(e as React.MouseEvent)}
         >
-          <Image 
+          <img 
             ref={imageRef}
             src={imageSrc} 
             alt="Source" 

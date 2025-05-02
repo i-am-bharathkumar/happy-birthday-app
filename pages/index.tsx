@@ -1,8 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import ImageCropper from "../components/ImageCropper";
 import Head from "next/head";
-import styles from '../styles/Home.module.css';
-import Image from 'next/image'; 
+import styles from '../styles/Home.module.css'; 
 
 export default function Home() {
   const [imageSrc, setImageSrc] = useState<string | null>(null);
@@ -147,7 +146,7 @@ export default function Home() {
                         setCroppedImage(img);
                       }}
                     >
-                      <Image src={img} alt={`Recent crop ${index + 1}`} />
+                      <img src={img} alt={`Recent crop ${index + 1}`} />
                     </div>
                   ))}
                 </div>
@@ -177,7 +176,7 @@ export default function Home() {
             
             <div className={styles.resultContent}>
               <div className={styles.resultImageWrapper}>
-                <Image src={croppedImage} alt="Cropped result" className={styles.resultImage} />
+                <img src={croppedImage} alt="Cropped result" className={styles.resultImage} />
               </div>
               
               <div className={styles.resultActions}>
